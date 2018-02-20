@@ -1,0 +1,35 @@
+<h3 class="content-header">Edit your poll</h3>
+<div class="internal">
+  <form class="create-poll-form" method="post" action="/poll/edit/<%= poll.pollid %>">
+    <div id="poll-name-wrapper">
+      <label>Poll name</label>
+      <input type="text" value="<%= poll.name %>" name="name">
+    </div>
+    <div class="options">
+      <div><h5 id="add-option" style="display: inline-block; cursor: pointer; text-decoration: underline">Add more options</h5></div>
+      <% poll.options.forEach(function(option) { %>
+        <%- include('../components/editPollOption', {candidate: option.choice}); %>
+      <% }); %>
+    </div>
+    <div class="privacy">
+      <h4>Privacy</h4>
+      <div class="checkbox-field">
+        <p>Private</p>
+        <% if (poll.privacy == 'private') { %>
+          <input class="checkbox" type="checkbox" name="private" checked>
+        <% } else { %>
+          <input class="checkbox" type="checkbox" name="private">
+        <% }; %>
+      </div>
+      <div class="checkbox-field">
+        <p>Public</p>
+        <% if (poll.privacy == 'public') { %>
+          <input class="checkbox" type="checkbox" name="public" checked>
+        <% } else { %>
+          <input class="checkbox" type="checkbox" name="public">
+        <% }; %>
+      </div>
+    </div>
+    <button class="form-button" type="submit">Submit</button>
+  </form>
+</div>

@@ -1,0 +1,124 @@
+.visible {
+  display: flex;
+}
+
+.not-visible {
+  display: none;
+}
+
+// animation speed standards
+// used by @mixin 'animated'
+$animFast: .1s;
+$animStrd: .5s;
+$animSlow: 1s;
+
+// cross browser friendly mixin
+@mixin animated($speed) {
+  -webkit-animation-duration: $speed;
+  -moz-animation-duration: $speed;
+  animation-duration: $speed;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+// animation speed classes
+.animate-fast {
+  @include animated($animFast);
+}
+
+.animate-norm {
+  @include animated($animStrd);
+}
+
+.animate-slow {
+  @include animated($animSlow);
+}
+
+// cross browser friendly animation name mixin
+@mixin animationName($name) {
+  -webkit-animation-name: $name;
+  -moz-animation-name: $name;
+  animation-name: $name;
+}
+
+// cross browser friendly keyframe mixin
+@mixin keyframe($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+// cross browser friendly animation declaration mixin
+@mixin xTransform($style) {
+  -webkit-transform: $style;
+  transform: $style;
+}
+
+/* classes for animation using composite of mixins */
+.fadeIn {
+  @include animationName(fadeIn);
+  @include keyframe(fadeIn) {
+    0% {
+      opacity: 0;
+      z-index: 0;
+      @include xTransform(translateX(-3000px));
+    }
+    100% {
+      opacity: 1;
+      z-index: 2;
+      @include xTransform(translateX(0px));
+    }
+  }
+}
+
+.fadeOut {
+  @include animationName(fadeOut);
+  @include keyframe(fadeOut) {
+    0% {
+      opacity: 1;
+      z-index: 2;
+      @include xTransform(translateX(0px));
+    }
+    100% {
+      opacity: 0;
+      z-index: 0;
+      @include xTransform(translateX(-3000px));
+    }
+  }
+}
+
+.fadeInText {
+  @include animationName(fadeInText);
+  @include keyframe(fadeInText) {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+}
+
+.fadeOutText {
+  @include animationName(fadeOutText);
+  @include keyframe(fadeOutText) {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+}
+
+.slideIn {
+  @include animationName(slideIn);
+  @include keyframe(slideIn) {
+    0% { @include xTransform(translateX(500px)); }
+    100% { @include xTransform(translateX(0px)); }
+  }
+}
+
+.slideOut {
+  @include animationName(slideOut);
+  @include keyframe(slideOut) {
+    0% { @include xTransform(translateX(0px)); }
+    100% { @include xTransform(translateX(500px)); }
+  }
+}

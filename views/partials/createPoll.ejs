@@ -1,0 +1,32 @@
+<h3 class="content-header">Creat a new election</h3>
+<div class="internal">
+  <form class="create-poll-form" method="post" action="/poll/<%= pollid %>">
+    <div id="poll-name-wrapper">
+      <label>Election name</label>
+      <input type="text" placeholder="Name" name="name">
+    </div>
+    <div class="options">
+      <div><h5 id="add-option" style="display: inline-block; cursor: pointer;">Add more candidates</h5></div>
+      <div>
+        <label>Candidate</label>
+        <input type="text" name="option" placeholder="Name">
+      </div>
+      <div>
+        <label>Candidate</label>
+        <input type="text" name="option" placeholder="Name">
+      </div>
+    </div>
+    <div class="privacy">
+      <h4>Privacy</h4>
+      <div class="checkbox-field">
+        <p>Private</p>
+        <input class="checkbox" type="checkbox" name="private">
+      </div>
+      <div class="checkbox-field">
+        <p>Public</p>
+        <input class="checkbox" type="checkbox" name="public" checked>
+      </div>
+    </div>
+    <button class="form-button" type="submit">Submit</button>
+  </form>
+</div>

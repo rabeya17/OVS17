@@ -1,0 +1,3 @@
+<% if (poll.privacy === 'private') { %>
+  <p>Send this link to a friend: <%= req.hostname + '/poll/vote/' + poll.pollid %></p>
+<% }; %>

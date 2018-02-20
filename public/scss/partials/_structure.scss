@@ -1,0 +1,129 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  min-height: 100vh;
+  @include xBrowserFlexColCenter;
+}
+
+header {
+  background: $darkColor;
+  height: 3em;
+  @include fullWidth;
+  @include centeredVertically;
+
+  a {
+    //text-decoration: underline;
+  }
+
+  nav {
+    padding: 0 1em 0 1em;
+    @include xBrowserFlexRowOutside;
+
+    div {
+      @include xBrowserFlexRowCenter;
+
+      a {
+        margin-right: 1em;
+      }
+
+      p {
+        color: $lightText;
+      }
+    }
+  }
+}
+
+main {
+  text-align: center;
+  flex: 1 1 auto;
+  @include setWidth(90%);
+  @include xBrowserFlexColInside;
+  @include tablet {
+    @include setWidth(70%);
+  }
+  @include desktop {
+    @include setWidth(50%);
+  }
+
+  h1 {
+    padding-top: 5%;
+    padding-bottom: 1%;
+  }
+
+  h5 {
+    padding-bottom: 5%;
+  }
+
+  .main-content {
+    max-height: 80%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background-color: $lightColor;
+    margin-bottom: 1em;
+    position: relative;
+    @include xBrowserFlexColInside;
+    @include sideBorders {
+      border-color: $darkColor;
+    };
+
+    .content-header {
+      padding: .5em 0 .5em 0;
+      border-bottom: 1px solid $lightColorDarker;
+    }
+  }
+}
+
+footer {
+  padding: .75em 0 .75em 0;
+  margin: 0;
+  background-color: $darkerColor;
+  @include fullWidth;
+  @include xBrowserFlexRowCenter;
+
+  p {
+    color: $lightText;
+  }
+}
+
+#modal {
+  background-color: rgba(15, 15, 15, .8);
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateX(-3000px);
+  @include fullWidth;
+  @include fullHeight;
+  @include centeredVertically;
+
+  #authenticate {
+    @include xBrowserFlexCenter;
+
+    .auth-form {
+      background-color: #f2f2f2;
+      border: 2px solid #ccc;
+      width: 18em;
+      padding: 1%;
+      z-index: 5;
+      @include xBrowserFlexColInside;
+
+      .modal-header {
+        @include xBrowserFlexRowOutside;
+      }
+
+      form {
+        margin-top: .5em;
+        @include xBrowserFlexColInside;
+
+        div {
+          padding-bottom: .125em;
+          @include xBrowserFlexRowOutside;
+
+          .form-button {
+            margin: 1em auto 0 auto;
+          }
+        }
+      }
+    }
+  }
+}

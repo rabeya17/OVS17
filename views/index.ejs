@@ -1,0 +1,36 @@
+<% include components/header.ejs %>
+
+  <% if (typeof errors != 'undefined') { %>
+    <div class="error-messages">
+    <h3>Account creation unsuccessful</h3>
+    <% errors.forEach(function(error) { %>
+      <p><%= error.msg %></p>
+    <% }); %>
+    </div>
+  <% }; %>
+
+  <% if (typeof message != 'undefined') { %>
+    <div class="message">
+      <h3><%= message %></h3>
+      <button class="login auth-button">Log in</button>
+    </div>
+  <% }; %>
+
+  <% if (typeof loginError != 'undefined' &&
+         loginError.length > 0) { %>
+    <div class="error-messages">
+      <h3><%= loginError %></h3>
+    </div>
+  <% }; %>
+
+  <div class="main-content">
+    <h3 class="content-header">View all polls</h3>
+    <p class="message-inner underlined standout"><a class="login">Create an account</a> to make and share your own polls!</p>
+    <% openPolls.forEach(function(poll) { %>
+      <% if (poll.privacy !== 'private') { %>
+        <%- include('components/openPolls', { openPoll: poll }); %>
+      <% } %>
+    <% }); %>
+  </div>
+
+<% include components/footer.ejs %>

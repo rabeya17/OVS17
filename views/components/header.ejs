@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Voting App</title>
+  <script src="https://use.fontawesome.com/069ba3895a.js"></script>
+  <link href="/main.css" rel="stylesheet" type="text/css">
+  <link href="/resources/favicon.png" rel="icon" size="16x16" type="image/jpeg">
+  <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav>
+      <div>
+        <a href="/"><div><i class="fa fa-handshake-o" aria-hidden="true"></i><span class="mobile-sensitive">Voting for the future</span></div></a>
+        <a href="/"><div><span class="mobile-sensitive">About Candidates</span></div></a>
+         <a href="/"><div><span class="mobile-sensitive">How to vote</span></div></a>
+     </div>
+    
+     <div>
+        <% if (!user) { %>
+          <a class="login"><div><i class="fa fa-user-circle" aria-hidden="true"></i><span class="mobile-sensitive">SignUp/LogIn</span></div></a>
+         
+        <% } else { %>
+         <p class="class">Hello, <%= user.name %>  </p>
+           <a href="/u/logout" class="logout"><div><i class="fa fa-sign-out" aria-hidden="true"></i><span class="mobile-sensitive">Log out</span></div></a>
+        <% }; %>
+      </div>
+      
+    </nav>
+  </header>
+  <main>
+   <div class="title">
+    <h1 class="fPara">Online Voting System</h1>
+    <p> Easier voting, Better lives </p>
+    </div>

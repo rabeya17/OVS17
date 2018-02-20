@@ -1,0 +1,12 @@
+<% include components/header.ejs %>
+
+  <div class="main-content">
+    <a href="/u" class="back-button"><i class="fa fa-arrow-left" aria-hidden="true"></i> <span class="mobile-sensitive">Go back</span></a>
+    <% if (typeof poll != 'undefined') { %>
+      <%- include('partials/editPoll', {poll: poll}); %>
+    <% } else { %>
+      <%- include('partials/createPoll'); %>
+    <% }; %>
+  </div>
+
+<% include components/footer.ejs %>

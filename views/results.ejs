@@ -1,0 +1,61 @@
+<% include components/header.ejs %>
+
+  <div class="main-content">
+    <a href="/u" class="back-button"><i class="fa fa-arrow-left" aria-hidden="true"></i> <span class="mobile-sensitive">Go back</span></a>
+    <h3 class="content-header"><%= poll.name %></h3>
+    <div class="internal">
+      <div id="loading">
+        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+      </div>
+      <div class="poll-display-wrap">
+        <canvas id="poll-result-visual"></canvas>
+      </div>
+      <% if ((user) && user.polls && user.polls.indexOf(String(poll._id)) != -1 || vote) {%>
+        <p class="caption">You voted "<b><%= vote %></b>"</p>  
+      <% };%>
+      <% if (poll.stage ===2) {%>
+      <a href="/poll/votesecond/<%= poll._id %>" class="back-button"> Vote 2nd round</a>
+      <% }; %>
+    </div>
+     <% if (poll.stage ===999) {%>
+      <% var winner = "" %>
+      <% var max = 0 %>
+      <% poll.options.forEach(function(op) { %>
+      <% if (op.votes > max)%>
+      <% max=op.votes; %>
+      <% winner = op.party%>
+      <% }); %>
+     <h2> All 500 seats goes to <%=winner%></h2>
+      <% }; %>
+     <% if (poll.stage ===998) {%>
+     <div class="internal" style="color:black">
+      <p>seats table</p>
+      <table style="border: 1px solid black;text-align: left;">
+       <tr><th>Party</th> <th>Seats</th></tr>
+      <% var total = 0 %>
+      <% poll.options.forEach(function(op) { %>
+      <% total +=op.votes; %>
+      <% }); %>
+
+      <% poll.options.forEach(function(op) { %>
+       <tr><td>
+       <%=op.party%>
+       </td>
+       <td>
+        <%=Math.floor(op.votes/total*500)%>
+       </td></tr>
+      <% }); %>
+      </table>
+      </div>
+      <% }; %>
+  </div>
+
+  <% if ((user) && (String(poll.creator) === String(user._id))) { %>
+    <%- include('partials/ownerPartial', { poll: poll, req: req }); %>
+  <% }; %>
+
+<script src="/javascript/modules/Chart.min.js"></script>
+<script src="/javascript/httpRequest.js"></script>
+<script src="/javascript/pollResults.js"></script>
+
+<% include components/footer.ejs %>

@@ -1,0 +1,252 @@
+.poll-display-wrap {
+  padding: 1em;
+}
+
+.login {
+  cursor: pointer;
+}
+
+.back-button {
+  position: absolute;
+  margin-top: .55em;
+  margin-left: .5em;
+}
+
+.button-text {
+  font-size: 1em;
+}
+
+.vote-button {
+  margin-bottom:.5em;
+  cursor: pointer;
+  @include flatButton(21em, 3em, $lightBlue);
+  transition: background-color 150ms, color 150ms;
+  &:hover {
+    background-color: $darkColor;
+    color: $lightText;
+  }
+  &:click {
+    background-color: $darkColor;
+  }
+}
+
+.edit-button {
+  margin: 0;
+  margin-left: 1rem;
+  margin-right: .5em;
+  cursor: pointer;
+  @include flatButton(5rem, 1.5rem, $yellow);
+  transition: background-color 150ms;
+  &:hover {
+    background-color: $darkYellow;
+  }
+}
+
+.delete-button {
+  margin: 0;
+  margin-right: 1rem;
+  cursor: pointer;
+  @include flatButton(5rem, 1.5rem, $lightRed);
+  transition: background-color 150ms;
+  &:hover {
+    background-color: $brightRed;
+  }
+}
+
+.form-button {
+  margin: 0;
+  cursor: pointer;
+  @include flatButton(21em, 3em, $lightBlue);
+  transition: background-color 150ms, color 150ms;
+  &:hover {
+    background-color: $darkColor;
+    color: $lightText;
+  }
+}
+
+.auth-button {
+  margin: 0;
+  cursor: pointer;
+  width: 9em;
+  height: 2em;
+  border: none;
+  border-radius: 2px;
+  background-color: $lightColor;
+  transition: background-color 150ms, color 150ms;
+  &:hover {
+    background-color: $darkerColor;
+    color: $lightText;
+  }
+}
+
+#poll-name-wrapper {
+  padding-bottom: .125em;
+}
+
+.create-poll-form {
+  @include xBrowserFlexColCenter;
+
+  h4 {
+    border-bottom: 1px solid $darkText;
+  }
+}
+
+.options {
+  padding-bottom: .25em;
+
+  div {
+    padding-bottom: .125em;
+  }
+}
+
+.privacy {
+  padding-bottom: 1em;
+}
+
+.poll {
+  border-bottom: 1px solid #CCCCCC;
+  padding: .125em 0 .125em 0;
+  transition: background-color 150ms;
+
+  &:hover {
+    background-color: #CCCCCC;
+  }
+
+  a {
+    display: block;
+  }
+}
+
+.userPoll {
+  border-bottom: 1px solid #CCCCCC;
+  position: relative;
+  @include xBrowserFlexRowOutside;
+
+  a {
+    display: inline-block;
+    line-height: 2em;
+    transition: color 150ms;
+    &:hover {
+      color: $darkerColor;
+    }
+  }
+}
+
+.form-container {
+  background: $lightText;
+  position: absolute;
+  display: inline-flex;
+  top: calc(0% + .25rem);
+  left: calc(50% - 6.25rem);
+  @include xTransform(translateX(500px));
+
+  form {
+    height: 100%;
+    @include centeredVertically;
+  }
+}
+
+.internal {
+  padding-top: .5em;
+  padding-bottom: 1em;
+}
+
+.caption {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.error-messages {
+  padding-bottom: 1em;
+
+  h3 {
+    margin-bottom: .25em;
+    padding-left: .5em;
+    padding-right: .5em;
+    display: inline-block;
+    border-bottom: 1px solid #333;
+    color: $darkRed;
+  }
+
+  p {
+    color: $darkRed;
+  }
+}
+
+.message {
+  padding-bottom: 1em;
+
+  h3 {
+    margin-bottom: .25em;
+    padding-left: .5em;
+    padding-right: .5em;
+    display: inline-block;
+    border-bottom: 1px solid #333;
+    color: $darkColor;
+  }
+
+  .login {
+    display: block;
+    margin: auto;
+    background-color: $lightBlue;
+    transition: background-color 150ms, color 150ms;
+    &:hover {
+      background-color: $darkColor;
+      color: $lightText;
+    }
+  }
+}
+
+.private-tag {
+  @include centeredVertically;
+  display: inline-flex;
+  width: $userPollHeight;
+}
+
+.menu {
+  @include centeredVertically;
+  width: $userPollHeight;
+
+  i {
+    z-index: 5;
+  }
+}
+
+.message-inner {
+  padding: .125em 0 .125em 0;
+  @include underlined(#ccc);
+}
+
+.checkbox-field {
+
+  input {
+    display: inline-block;
+  }
+
+  p {
+    display: inline-block;
+  }
+}
+
+.standout {
+  background: $lightBlue;
+  font-weight: bold;
+
+  a {
+    text-decoration: underline;
+    color: $darkerColor;
+    transition: color 150ms;
+    &:hover {
+      color: $darkText;
+    }
+  }
+}
+
+.mobile-sensitive {
+  display: none;
+  margin-left: .5em;
+
+  @include tablet {
+    display: initial;
+  }
+}

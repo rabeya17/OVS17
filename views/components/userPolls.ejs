@@ -1,0 +1,26 @@
+<div class="userPoll">
+
+  <div class="private-tag">
+    <% if (userPoll.privacy === 'private') { %>
+      <p><i class="fa fa-lock" aria-hidden="true"></i></p>
+    <% }; %>
+  </div>
+
+  <a href="/poll/vote/<%= userPoll.pollid %>" class="animate-fast"><%= userPoll.name %></a>
+
+  <div class="menu">
+    <i class="fa fa-bars" aria-hidden="true"></i>
+    <div class="form-container delete-container animate-norm">
+      <form method="get" action="/poll/edit/<%= userPoll.pollid %>">
+        <button class="edit-button" type="submit" name="">Edit</button>
+      </form>
+      <form method="post" action="/poll/delete/<%= userPoll.pollid %>">
+        <button class="delete-button" type="submit" name="<%= userPoll.pollid %>">Delete</button>
+      </form>
+      <form method="get" action="/poll/close/<%=userPoll.pollid%>">
+        <button class="edit-button" type="submit" name="">Close</button>
+      </form>
+    </div>
+  </div>
+
+</div>

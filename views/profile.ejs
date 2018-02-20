@@ -1,0 +1,42 @@
+<% include components/header.ejs %>
+
+  <div class="main-content">
+   <% if (user && user.name === "aaa") { %>
+    <h3 class="content-header">Your election</h3>
+     <% if (userPolls.length < 1) { %>
+    <% } else { %>
+    <% userPolls.forEach(function(poll) { %>
+      <%- include('components/userPolls', { userPoll: poll }); %>
+      <% }); %>
+    <% }; %>
+     <p class="message-inner underlined"> <a href="/poll">create a new election</a></p>
+    <% }%>
+   
+  </div>
+
+  <div class="main-content">
+    <h3 class="content-header">All polls</h3>
+    <% if (user && user.name === "aaa") { %>
+    <table>
+<% openPolls.forEach(function(poll) { %>
+     <tr><td>
+      <% if ((String(poll.creator) !== String(user._id)) && (poll.privacy !== 'private')) { %>
+        <%- include('components/openPolls', { openPoll: poll }); %>
+        </td>
+   <td>
+     <a href="/poll/close/<%=poll.pollid%>"> Close</a>
+   </td></tr> 
+      <% }; %>
+    <% }); %>
+    </table>
+
+   <% } else { %>
+    <% openPolls.forEach(function(poll) { %>
+      <% if ((String(poll.creator) !== String(user._id)) && (poll.privacy !== 'private')) { %>
+        <%- include('components/openPolls', { openPoll: poll }); %>
+      <% }; %>
+    <% }); %>
+    <% }%>
+  </div>
+
+<% include components/footer.ejs %>

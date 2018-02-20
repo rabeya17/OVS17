@@ -1,0 +1,18 @@
+<% include components/header.ejs %>
+  <div class="main-content">
+    <a href="/u" class="back-button"><i class="fa fa-arrow-left" aria-hidden="true"></i> <span class="mobile-sensitive">Go back</span></a>
+    <h3 class="content-header"><%= poll.name %></h3>
+    <div class="internal">
+      <form class="vote-form" method="post" action="/poll/vote/<%= poll.pollid %>">
+        <% poll.options.forEach(function(option) { %>
+          <%- include('components/voting_option', {choice: option.choice}); %>
+        <% }); %>
+      </form>
+    </div>
+  </div>
+
+  <% if ((user) && (String(poll.creator) === String(user._id))) { %>
+    <%- include('partials/ownerPartial', { poll: poll, req: req }); %>
+  <% }; %>
+
+<% include components/footer.ejs %>
